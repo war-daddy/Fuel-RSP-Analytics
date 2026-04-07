@@ -1,5 +1,7 @@
 # ⛽ Fuel RSP Analytics Dashboard
 
+**🚀 Live Website:** [https://fuel-rsp-analytics.vercel.app/](https://fuel-rsp-analytics.vercel.app/)
+
 A high-performance, strictly typed React application built to visualize the monthly average Retail Selling Price (RSP) for Petrol and Diesel across Metro Cities in India. 
 
 ## 🏗️ Architecture & Processing Logic
@@ -46,12 +48,4 @@ src/
 ├── main.tsx
 ```
 
-## 📸 Screenshots
-*(Placeholder for UI screenshots detailing the dashboard)*
 
-## 🌐 Deployment Logic
-
-**Vercel / Netlify Deployment**:
-1. Run `npx vercel` natively at the root folder or link your Github repository directly to Vercel/Netlify.
-2. Keep the Framework preset as **Vite**.
-3. It will inherently consume `yarn build` output from the `/dist` directory automatically because of standard integrations.
