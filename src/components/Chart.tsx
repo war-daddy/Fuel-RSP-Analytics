@@ -25,6 +25,8 @@ export const Chart: React.FC<ChartProps> = ({ data, title }) => {
       instanceRef.current = echarts.init(chartRef.current);
     }
 
+    const isMobile = window.innerWidth < 768;
+
     // Set or Update the properties
     const option: echarts.EChartsCoreOption = {
       title: {
@@ -50,7 +52,13 @@ export const Chart: React.FC<ChartProps> = ({ data, title }) => {
         type: 'category',
         data: MONTHS,
         axisLine: { lineStyle: { color: '#475569' } },
-        axisLabel: { color: '#cbd5e1', margin: 12 }
+        axisLabel: { 
+          color: '#cbd5e1', 
+          margin: 12,
+          rotate: isMobile ? 45 : 0,
+          fontSize: isMobile ? 10 : 12,
+          hideOverlap: true
+        }
       },
       yAxis: {
         type: 'value',
@@ -73,7 +81,7 @@ export const Chart: React.FC<ChartProps> = ({ data, title }) => {
             borderRadius: [4, 4, 0, 0]
           },
           label: {
-            show: true,
+            show: !isMobile,
             position: 'top',
             color: '#e2e8f0',
             formatter: (params: any) => {
@@ -96,7 +104,25 @@ export const Chart: React.FC<ChartProps> = ({ data, title }) => {
     let timeoutId: ReturnType<typeof setTimeout>;
     const resizeObserver = new ResizeObserver(() => {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => instanceRef.current?.resize(), 100);
+      timeoutId = setTimeout(() => {
+        if (!instanceRef.current) return;
+        instanceRef.current.resize();
+        
+        const mobile = window.innerWidth < 768;
+        instanceRef.current.setOption({
+          xAxis: {
+            axisLabel: {
+              rotate: mobile ? 45 : 0,
+              fontSize: mobile ? 10 : 12
+            }
+          },
+          series: [{
+            label: {
+              show: !mobile
+            }
+          }]
+        });
+      }, 100);
     });
     
     resizeObserver.observe(chartRef.current);
