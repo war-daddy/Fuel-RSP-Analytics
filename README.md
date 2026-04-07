@@ -51,10 +51,10 @@ src/
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="./public/screenshots/desktop-view.png" alt="Desktop View" width="800" />
+  <img src="./public/screenshots/view1.png" alt="View" width="800" />
 </p>
 <p align="center">
-  <img src="./public/screenshots/mobile-view.png" alt="Mobile View" width="800" />
+  <img src="./public/screenshots/view2.png" alt="View" width="800" />
 </p>
 
 
