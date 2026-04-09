@@ -7,7 +7,7 @@ import { Chart } from './components/Chart';
 
 function App() {
   const [dataset, setDataset] = useState<ParsedDataset | null>(null);
-  
+
   // Controlled Selectors
   const [selectedCity, setSelectedCity] = useState<string>('');
   const [selectedFuel, setSelectedFuel] = useState<string>('');
@@ -21,7 +21,7 @@ function App() {
         const response = await fetch('/data/dataset.csv');
         if (!response.ok) throw new Error("Failed to fetch data");
         const csvText = await response.text();
-        
+
         // Single pass O(n) parse
         const parsed = parseCSV(csvText);
         setDataset(parsed);
@@ -62,7 +62,7 @@ function App() {
     <div className="app-container">
       <header className="header">
         <h1>Fuel RSP Analytics</h1>
-        <p>Monthly Average Retail Selling Price across Metro Cities</p>
+        <p>Monthly Average Retail Selling Price across Metro Cities by govt.</p>
       </header>
 
       <main>
@@ -88,8 +88,8 @@ function App() {
         </section>
 
         <section className="chart-panel">
-          <Chart 
-            data={chartData} 
+          <Chart
+            data={chartData}
             title={`${selectedFuel} RSP in ${selectedCity} (${selectedYear})`}
           />
         </section>
